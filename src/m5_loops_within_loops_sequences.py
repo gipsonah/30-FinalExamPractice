@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in SEQUENCES-OF-SUBSEQUENCES problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Alex G
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -71,6 +71,20 @@ def run_test_integers():
     print('Expected is:', expected)
     print('Actual is:  ', answer)
 
+    # Test 2:
+    expected = [3, 4, 5]
+    answer = integers([(3, 4),
+                       ('hi'),
+                       [],
+                       'hello',
+                       [],
+                       ['oops'],
+                       [['asdasda'], ['asdasda']],
+                       [5]
+                       ])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
+
 
 def integers(sequence_of_sequences):
     """
@@ -119,6 +133,13 @@ def integers(sequence_of_sequences):
     #    TIME ESTIMATE:  10 minutes.
     # ------------------------------------------------------------------
 
+    list = []
+    for k in range(len(sequence_of_sequences)):
+        for j in range(len(sequence_of_sequences[k])):
+            if type(sequence_of_sequences[k][j]) is int:
+                list.append(sequence_of_sequences[k][j])
+    return list
+
 
 def run_test_big_letters():
     """ Tests the    big_letters    function. """
@@ -155,6 +176,21 @@ def run_test_big_letters():
                           'OoPs'  # OP
                           'D',  # D
                           'OOps'  # OO
+                          ])
+    print('Expected is:', expected)
+    print('Actual is:  ', answer)
+
+    # Test 2:
+    expected = 'ABCD'
+    answer = big_letters([(3, 1, 4),
+                          'asoidjoiAalskdjlasi9du?',
+                          (10, 'apsoidjapsidjBVaosidjlaskdjlij', 10),
+                          [],
+                          'B',
+                          'C',
+                          'os'
+                          'D',
+                          's'
                           ])
     print('Expected is:', expected)
     print('Actual is:  ', answer)
@@ -211,7 +247,13 @@ def big_letters(sequence_of_sequences):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  12 minutes.
     # ------------------------------------------------------------------
-
+    list = ''
+    for k in range(len(sequence_of_sequences)):
+        if type(sequence_of_sequences[k]) is str:
+            for j in range(len(sequence_of_sequences[k])):
+                if sequence_of_sequences[k][j].isupper():
+                    list += sequence_of_sequences[k][j]
+    return list
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
